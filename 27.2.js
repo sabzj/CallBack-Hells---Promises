@@ -6,54 +6,61 @@
 // 6. call it once with an array that includes at least one item that is not a word.
 // 7. Print the resolve and reject in a .then, .catch.
 
-const makeAllCaps = (words) => {
-  return new Promise((resolve, reject) => {
-    if (Array.isArray(words)) {
-      const capitalizedWords = words.map((word) => {
-        if (typeof word === "string") {
-          return word.toUpperCase();
-        } else {
-          // Reject the promise if an element is not a string
-          reject("Array contains non-string elements");
-        }
-      });
-      resolve(capitalizedWords);
-    } else {
-      // Reject the promise if the argument is not an array
-      reject("Input is not an array");
-    }
-  });
-};
+// const makeAllCaps = (words) => {
+//   return new Promise((resolve, reject) => {
+//     if (Array.isArray(words)) {
+//       const capitalizedWords = words.map((word) => {
+//         if (typeof word === "string") {
+//           return word.toUpperCase();
+//         } else {
+//           // Reject the promise if an element is not a string
+//           reject("Array contains non-string elements");
+//         }
+//       });
+//       resolve(capitalizedWords);
+//     } else {
+//       // Reject the promise if the argument is not an array
+//       reject("Input is not an array");
+//     }
+//   });
+// };
 
-const sortWords = (words) => {
-  return new Promise((resolve, reject) => {
-    const wordToSort = words.sort();
-    resolve(sortWords);
-  });
-};
+// const sortWords = (words) => {
+//   return new Promise((resolve, reject) => {
+//     const wordToSort = words.sort();
+//     resolve(sortWords);
+//   });
+// };
 
-// Example usage:
-const words = ["ahmad", "ibrahim", "omar", "salma"];
-makeAllCaps(words)
-  .then((result) => {
-    console.log(result); // This will log the array with capitalized words
-  })
-  .catch((error) => {
-    console.error(error); // This will log any error messages
-  });
+// // Example usage:
+// const words = ["ahmad", "ibrahim", "omar", "salma"];
+// makeAllCaps(words)
+//   .then((result) => {
+//     console.log(result); // This will log the array with capitalized words
+//   })
+//   .catch((error) => {
+//     console.error(error); // This will log any error messages
+//   });
 
 //-------------------------- try to solve it using foreach method---------------
 
-// const words = ["ahmad", "ibrahim", "omar", "salma"];
+const words2 = ["ahmad", "ibrahim", "omar", "salma"];
 
-// const makeAllCaps = (words) => {
-//     return new Promise ((resolve, reject)) {
-//         const makeCapital = words.forEach(element => {
-//             words[i] = words[i].toUpperCase()
-//             resolve (makeAllCaps);
-//         });
-//     }
-// }
+const makeAllCaps2 = (words) => {
+  return new Promise((resolve, reject) => {
+    const capsArr = [];
+    const makeCapital = words.forEach((element) => {
+      const upperWord = element.toUpperCase();
+      capsArr.push(upperWord);
+    });
+    resolve(capsArr);
+  });
+};
+console.log(makeAllCaps2(words2));
+
+makeAllCaps2(words2).then((result) => {
+  console.log(result);
+});
 
 // function makeAllCaps(words) {
 //     for (let i = 0; i < words.length; i++) {
